@@ -1,6 +1,6 @@
 # Fleet API Example
 
-This is a simple Fleet manager example app.
+Simple example of using the [Fleet API library](https://github.com/dweaver/exosite-fleet).
 
 ## Usage
 
@@ -14,4 +14,4 @@ $ python -m SimpleHTTPServer 8005
 - Click "Sign In" and log in with an account with Fleet API access. 
 - Press "call API". The number of devices should appear a few minutes later.
 
-Note that port must be 8005 or 3000 to make this work from localhost. To host an app from a different URL, contact [Dan Weaver](mailto:danweaver@exosite.com).
+Port must be 8005 or 3000 to make this work from localhost. To host an app somewhere other than localhost:8005 or localhost:3000, contact [Dan Weaver](mailto:danweaver@exosite.com).
