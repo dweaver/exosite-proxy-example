@@ -1,0 +1,22 @@
+{
+  "name": "exosite-fleet-example",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dweaver/exosite-fleet-example",
+  "authors": [
+    "Dan Weaver <danweaver@exosite.com>"
+  ],
+  "description": "Fleet API library example",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "auth0-lock": "~7.7.4",
+    "exosite-fleet": "~0.0.0",
+    "jquery": "~2.1.4"
+  }
+}
