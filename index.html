@@ -1,0 +1,74 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="login-box auth0-box before">
+      <h3>Fleet API Example</h3>
+      <p>The simplest imaginable Fleet API example.</p>
+      <a href="javascript:void(0);" class="btn-login">Sign In</a>
+    </div>
+    <div class="logged-in-box auth0-box logged-in" style="display: none;">
+      <h2>Welcome <span class="nickname"></span></h2>
+      <button class="btn btn-lg btn-primary btn-api">Call API</button>
+      <div id="result"></div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock-6.js"></script>
+    <script>
+      var AUTH0_CLIENT_ID = 'dcnod3KP9Hn40y0VWbmKLVRODQ9I12xv';
+      var AUTH0_DOMAIN = 'exositeapp.auth0.com';
+    </script>
+    <script src="https://rawgit.com/dweaver/exosite-fleet/master/exosite-fleet.js"></script>
+
+    <script>
+    $(document).ready(function() {
+      var lock = new Auth0Lock(
+        AUTH0_CLIENT_ID,
+        AUTH0_DOMAIN
+      );
+
+      var userProfile;
+
+      $('.btn-login').click(function(e) {
+        e.preventDefault();
+        lock.showSignin({authParams: { scope: 'openid email'}}, function(err, profile, token) {
+          if (err) {
+            // Error callback
+            console.log("There was an error");
+            alert("There was an error logging in");
+          } else {
+            // Success callback
+
+            // Save the JWT token.
+            localStorage.setItem('userToken', token);
+
+            // Save the profile
+            userProfile = profile;
+
+            $('.login-box').hide();
+            $('.logged-in-box').show();
+            $('.nickname').text(profile.nickname);
+            $('.nickname').text(profile.name);
+            $('.nickname').text(profile.email);
+          }
+        });
+      });
+
+     $('.btn-api').click(function(e) {
+        // Set up Fleet API library
+        var token = localStorage.getItem('userToken');
+        var fleet = require('exosite-fleet');
+        var exo = new fleet(token);
+        console.log('Querying fleet API...');
+        exo.query({}, ["sn"]).then(function(devices) {
+          $('#result').html('Number of devices accessible: ' + devices.length);
+        }, function(err) {
+          console.log(err);
+        });
+     });
+
+    });
+    </script>
+  </body>
+</html>
