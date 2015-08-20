@@ -23,12 +23,15 @@ $(document).ready(function() {
         alert("There was an error logging in");
       } else {
         // Success callback
+        
 
         // Save the JWT token.
         localStorage.setItem('userToken', token);
+        userToken = token;
 
         // Save the profile
         localStorage.setItem('userProfile', JSON.stringify(profile));
+        userProfile = profile;
 
         login();
       }
@@ -42,10 +45,17 @@ $(document).ready(function() {
   }
 
   function logout() {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userProfile');
     $('.login-box').show();
     $('.logged-in-box').hide();
     $('.nickname').text('');
   }
+
+  $('.btn-logout').click(function(e) {
+    e.preventDefault();
+    logout();
+  });
 
   $('.btn-api').click(function(e) {
     // Set up Fleet API library
