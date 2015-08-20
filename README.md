@@ -7,6 +7,7 @@ Simple example of using the [Fleet API library](https://github.com/dweaver/exosi
 ```
 $ git clone git@github.com:dweaver/exosite-fleet-example.git
 $ cd exosite-fleet-example
+$ bower install
 $ python -m SimpleHTTPServer 8005
 ```
 
