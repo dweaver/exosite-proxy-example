@@ -49,13 +49,14 @@ $(document).ready(function() {
 
   $('.btn-api').click(function(e) {
     // Set up Fleet API library
-    var token = localStorage.getItem('userToken');
     var fleet = require('exosite-fleet');
-    var exo = new fleet(token);
+    var exo = new fleet(userToken);
     console.log('Querying fleet API...');
-    exo.queryDevices({user: userProfile.email}, ['name', 'sn']).then(function(devices) {
-      $('#result').html('Number of devices accessible: ' + devices.length);
+    console.log(userProfile.email);
+    exo.queryDevices({email: userProfile.email}, ['name', 'sn']).then(function(devices) {
+      $('#result').html(userProfile.email + ' owns this many devices: ' + devices.length);
     }, function(err) {
+      console.log('Error');
       console.log(err);
     });
   });
