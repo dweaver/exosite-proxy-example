@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dweaver/exosite-proxy-example/issues"
   },
-  "homepage": "https://github.com/dweaver/exosite-proxy-example"
+  "homepage": "https://github.com/dweaver/exosite-proxy-example",
+  "dependencies": {
+    "bower": "1.6.6"
+  }
 }
