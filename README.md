@@ -21,5 +21,5 @@ Port must be 8005 or 3000 to make this work from localhost. To host an app somew
 ## Deploy to Heroku
 
 ```
-$ heroku buildpacks:set https://github.com/florianheinemann/buildpack-nginx.git
+heroku buildpacks:set https://github.com/abhishekmunie/heroku-buildpack-static.git
 ```
