@@ -20,6 +20,7 @@ Port must be 8005 or 3000 to make this work from localhost. To host an app somew
 
 ## Deploy to Heroku
 
-```
-heroku buildpacks:set https://github.com/abhishekmunie/heroku-buildpack-static.git
-```
+Press this button to host this app on Heroku.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+

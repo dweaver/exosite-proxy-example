@@ -1,6 +1,12 @@
 {
+  "name": "Proxy Example",
+  "description": "An example of using the Exosite Proxy API",
+  "repository": "https://github.com/dweaver/exosite-proxy-example",
+  "keywords": ["exosite", "iot"],
   "buildpacks": [
     {
       "url": "https://github.com/abhishekmunie/heroku-buildpack-static.git"
     }
+  ]
+  "logo": "https://raw.githubusercontent.com/dweaver/exosite-proxy-example/master/logo.png"
 }
