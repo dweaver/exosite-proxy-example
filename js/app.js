@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var AUTH0_CLIENT_ID = 'dcnod3KP9Hn40y0VWbmKLVRODQ9I12xv';
+  var AUTH0_CLIENT_ID = 'oHrOYaiwy5EhaXXTSHsK7nBiSNeiPpKz';
   var AUTH0_DOMAIN = 'exositeapp.auth0.com';
 
   var lock = new Auth0Lock(
