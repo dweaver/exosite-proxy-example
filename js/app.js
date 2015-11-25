@@ -58,10 +58,10 @@ $(document).ready(function() {
   });
 
   $('.btn-api').click(function(e) {
-    // Set up Fleet API library
-    var fleet = require('exosite-fleet');
-    var exo = new fleet(userToken);
-    console.log('Querying fleet API...');
+    // Set up Proxy API library
+    var proxy = require('exosite-proxy');
+    var exo = new proxy(userToken);
+    console.log('Querying proxy API...');
     console.log(userProfile.email);
     exo.queryDevices({email: userProfile.email}, ['name', 'sn']).then(function(devices) {
       $('#result').html(userProfile.email + ' owns this many devices: ' + devices.length);
