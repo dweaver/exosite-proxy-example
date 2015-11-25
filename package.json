@@ -1,0 +1,20 @@
+{
+  "name": "exosite-proxy-example",
+  "version": "0.0.0",
+  "description": "Exosite proxy example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dweaver/exosite-proxy-example.git"
+  },
+  "author": "Dan Weaver <danweaver@exosite.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dweaver/exosite-proxy-example/issues"
+  },
+  "homepage": "https://github.com/dweaver/exosite-proxy-example"
+}
