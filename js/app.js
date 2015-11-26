@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  var DEMO_DEVICE_RID = '239f19152a1316ee30d5845f33884d997917475c';
+
   var AUTH0_CLIENT_ID = 'oHrOYaiwy5EhaXXTSHsK7nBiSNeiPpKz';
   var AUTH0_DOMAIN = 'exositeapp.auth0.com';
 
@@ -23,7 +25,6 @@ $(document).ready(function() {
         alert("There was an error logging in");
       } else {
         // Success callback
-        
 
         // Save the JWT token.
         localStorage.setItem('userToken', token);
@@ -57,16 +58,90 @@ $(document).ready(function() {
     logout();
   });
 
-  $('.btn-api').click(function(e) {
-    // Set up Proxy API library
-    var proxy = window.ApiService;
-    var exo = new proxy(userToken);
-    console.log('Querying proxy API...');
-    console.log(userProfile.email);
+  // Set up Proxy API library
+  var exo = new window.ApiService(userToken);
+
+  function showResult(result) {
+    $('#result').html(JSON.stringify(result, null, 2));
+  }
+
+  function showError(err) {
+    $('#result').html(err);
+  }
+
+  $('#btn-read-dataport').click(function(e) {
+    // http://docs.exosite.com/rpc/#read
+    exo.rpc(DEMO_DEVICE_RID,
+      [{procedure: 'read', 
+        arguments: [{alias: 'test_dataport'}, {limit: 10}]}])
+      .then(function(response) {
+        showResult(response);
+      }, function(err) {
+        showError(err);
+      });
+  });
+
+  $('#btn-write-dataport').click(function(e) {
+    // http://docs.exosite.com/rpc/#write
+    var value = $('#value-to-write').val();
+    exo.rpc(DEMO_DEVICE_RID,
+      [{procedure: 'write', 
+        arguments: [{alias: 'test_dataport'}, value]}])
+      .then(function(response) {
+        showResult(response);
+      }, function(err) {
+        showError(err);
+      });
+  });
+
+  $('#btn-device-info').click(function(e) {
+    // http://docs.exosite.com/rpc/#info
+    exo.rpc(DEMO_DEVICE_RID,
+      [{procedure: 'info', 
+        arguments: [{alias: ''}, {}]}])
+      .then(function(response) {
+        showResult(response);
+      }, function(err) {
+        showError(err);
+      });
+  });
+
+  $('#btn-dataport-info').click(function(e) {
+    // http://docs.exosite.com/rpc/#info
+    exo.rpc(DEMO_DEVICE_RID,
+      [{procedure: 'info', 
+        arguments: [{alias: 'test_dataport'}, {}]}])
+      .then(function(response) {
+        showResult(response);
+      }, function(err) {
+        showError(err);
+      });
+  });
+ 
+  $('#btn-flush-dataport').click(function(e) {
+    // http://docs.exosite.com/rpc/#flush
+    exo.rpc(DEMO_DEVICE_RID,
+      [{procedure: 'flush', 
+        arguments: [{alias: 'test_dataport'}, {}]}])
+      .then(function(response) {
+        showResult(response);
+      }, function(err) {
+        showError(err);
+      });
+  });
+
+  $('#btn-get-devices').click(function(e) {
+    // getDevices() internally calls listing and info 
+    // to get data for multiple devices under the 
+    // application root.
+    //
+    // http://docs.exosite.com/rpc/#listing
+    // http://docs.exosite.com/rpc/#info
     exo.getDevices(function(devices) {
-        console.log('devices', devices);
+      console.log(devices);
+      showResult(devices);
     }, function(err) {
-        console.log('err', err);
+      showError(err);
     });
   });
 

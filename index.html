@@ -1,20 +1,50 @@
 <html>
   <head>
+    <link rel="stylesheet" href="css/app.css" type="text/css" media="screen">
   </head>
   <body>
     <div class="login-box auth0-box before">
-      <h3>Proxy API Example </h3>
-      <p>The simplest imaginable Proxy API example.</p>
+      <h3>Proxy API Example</h3>
       <a href="javascript:void(0);" class="btn-login">Sign In</a>
     </div>
     <div class="logged-in-box auth0-box logged-in" style="display: none;">
-      <h2>Welcome <span class="nickname"></span></h2>
+      <h2>Proxy API Demo</h2> 
+      Logged in as <span class="nickname"></span>. <a href="javascript:void(0);" class="btn-logout">Sign Out</a>
 
-      <button class="btn btn-lg btn-primary btn-api">Call API</button>
-      <div id="result"></div>
-      <a href="javascript:void(0);" class="btn-logout">Sign Out</a>
+      <h4>Examples</h4>
+      <table class="examples">
+        <tr>
+          <td>
+            Get information about all the clients under the root client.
+            <button id="btn-get-devices">Get Devices</button>
+          </td>
+          <td>
+            Get information about <code>test_device</code>.
+            <button id="btn-device-info">Get Device Info</button>
+          </td>
+          <td>
+            Get information about <code>test_dataport</code> (a child of <code>test_device</code>).
+            <button id="btn-dataport-info">Get Dataport Info</button>
+          </td>
+          <td>
+            Read the last ten points from <code>test_dataport</code>.
+            <button id="btn-read-dataport">Read Dataport</button>
+          </td>
+          <td>
+            Write the value <input id="value-to-write"></input> to <code>test_dataport</code>.
+            <button id="btn-write-dataport">Write Dataport</button>
+          </td>
+          <td>
+            Flush all values from <code>test_dataport</code>.
+            <button id="btn-flush-dataport">Flush Dataport</button>
+          </td>
+        </tr>
+      </table>
+      <h4>Result</h4>
+      <pre><code id="result">
+      </code></pre>
     </div>
-
+    <a href="https://github.com/dweaver/exosite-proxy-example"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></img></a>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/auth0-lock/build/auth0-lock.min.js"></script>
     <script src="bower_components/exosite-proxy/exosite-proxy.js"></script>

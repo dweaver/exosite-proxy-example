@@ -1,0 +1,9 @@
+.examples button {
+  display: block;
+}
+
+.examples td {
+  width: 150px;
+  padding-right: 20px;
+  vertical-align: bottom;
+}
