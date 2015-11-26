@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   $('.btn-login').click(function(e) {
     e.preventDefault();
-    lock.showSignin({authParams: { scope: 'openid email'}}, function(err, profile, token) {
+    lock.showSignin({authParams: { scope: 'openid email domain'}}, function(err, profile, token) {
       if (err) {
         // Error callback
         console.log("There was an error");

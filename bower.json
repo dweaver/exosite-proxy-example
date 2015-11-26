@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "auth0-lock": "~7.7.4",
-    "exosite-proxy": "~0.0.0",
+    "exosite-proxy": "~0.0.1",
     "jquery": "~2.1.4"
   }
 }
