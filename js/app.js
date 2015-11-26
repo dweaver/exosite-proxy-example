@@ -59,15 +59,14 @@ $(document).ready(function() {
 
   $('.btn-api').click(function(e) {
     // Set up Proxy API library
-    var proxy = require('exosite-proxy');
+    var proxy = window.ApiService;
     var exo = new proxy(userToken);
     console.log('Querying proxy API...');
     console.log(userProfile.email);
-    exo.queryDevices({email: userProfile.email}, ['name', 'sn']).then(function(devices) {
-      $('#result').html(userProfile.email + ' owns this many devices: ' + devices.length);
+    exo.getDevices(function(devices) {
+        console.log('devices', devices);
     }, function(err) {
-      console.log('Error');
-      console.log(err);
+        console.log('err', err);
     });
   });
 
