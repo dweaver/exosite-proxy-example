@@ -10,7 +10,9 @@ $(document).ready(function() {
   );
 
   var userProfile = JSON.parse(localStorage.getItem('userProfile'));
-  var userToken = localStorage.getItem('userToken');
+  var userToken   = localStorage.getItem('userToken');
+  var exo         = null; // Initialized post-login
+
   if (userProfile) {
     // we're already logged in.
     login();
@@ -33,6 +35,9 @@ $(document).ready(function() {
         // Save the profile
         localStorage.setItem('userProfile', JSON.stringify(profile));
         userProfile = profile;
+
+        // Set up Proxy API library
+        exo = new window.ApiService(userToken);
 
         login();
       }
@@ -57,9 +62,6 @@ $(document).ready(function() {
     e.preventDefault();
     logout();
   });
-
-  // Set up Proxy API library
-  var exo = new window.ApiService(userToken);
 
   function showResult(result) {
     $('#result').html(JSON.stringify(result, null, 2));
